@@ -1,0 +1,1 @@
+[{"key":1630591965987,"parity":"asd","operation":"GREATER","price":1,"conditionDone":false,"candleCloseCondition":false,"date":"2021-9-2 17:12"}]
