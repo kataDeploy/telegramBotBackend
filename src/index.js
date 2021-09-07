@@ -23,9 +23,11 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 app.use(express.json());
 let trackList = [];
 let refreshIntervalId = -1;
+let backendTimeInterval = "4h";
 
 app.post("/setTelegram", (req, res) => {
     telegram.setTelegramConfig(req.body.telegramApi,req.body.chatId);
+    backendTimeInterval = req.body.backendTimeInterval;
     res.send('telegram api set');
     console.log('telegram api set');
 });
@@ -42,7 +44,7 @@ function getBinanceData(symbol) {
     "https://api.binance.com/api/v3/klines?symbol=" +
     symbol +
     "&interval=" +
-    "1h" +
+    backendTimeInterval +
     "&limit=2";
   return axios 
     .get(url)
